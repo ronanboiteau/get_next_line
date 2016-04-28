@@ -1,2 +1,2 @@
-# get_next_line
-C function that reads line per line from a file descriptor
+# get_next_line()
+C function that returns STDIN input line per line each time the function is called
