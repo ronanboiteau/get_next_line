@@ -55,7 +55,7 @@ static char	*str_cpy_cat(char *dest,
   return (dest);
 }
 
-static char	*_auto_alloc(char *ptr, size_t mem)
+static char	*auto_alloc(char *ptr, size_t mem)
 {
   char		*new_ptr;
   int		ptr_len;
@@ -78,10 +78,10 @@ static char	*_auto_alloc(char *ptr, size_t mem)
   return (new_ptr);
 }
 
-static char	*_get_new_buffer(char *buf,
-				 char *buf_full,
-				 const int fd,
-				 int eols)
+static char	*get_new_buffer(char *buf,
+				char *buf_full,
+				const int fd,
+				int eols)
 {
   int		tmp;
 
@@ -97,7 +97,7 @@ static char	*_get_new_buffer(char *buf,
       if (eols != 0)
 	return (buf_full);
       if ((tmp = read(fd, buf, READ_SIZE)) <= 0 || (buf[tmp] = '\0')
-	  || !(buf_full = _auto_alloc(buf_full, READ_SIZE + 1)))
+	  || !(buf_full = auto_alloc(buf_full, READ_SIZE + 1)))
       	{
 	  if (buf_full != NULL && buf_full[0] != '\0')
 	    return (buf_full);
@@ -119,7 +119,7 @@ char		*get_next_line(const int fd)
 
   idx_buf = 0;
   if (READ_SIZE <= 0 || !(buf = malloc(sizeof(char) * (READ_SIZE + 1)))
-      || !(buffer = _get_new_buffer(buf, buffer, fd, 0)))
+      || !(buffer = get_new_buffer(buf, buffer, fd, 0)))
     return (NULL);
   free(buf);
   idx = 0;
@@ -128,7 +128,7 @@ char		*get_next_line(const int fd)
   while (buffer[idx_buf + idx] && buffer[idx_buf + idx] != '\n')
     idx += 1;
   buf = buffer;
-  if (!(line = _auto_alloc((line = NULL), idx + 2)) ||
+  if (!(line = auto_alloc((line = NULL), idx + 2)) ||
       !(buffer = buf[idx_buf + idx] == '\0' ? my_strdup("\0")
 	: my_strdup(buf + idx_buf + idx + 1)))
     return (NULL);
