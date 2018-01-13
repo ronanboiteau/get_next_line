@@ -2,11 +2,11 @@
 
 {EPITECH.} first year project.
 
-C function that reads from a [filedescriptor](https://en.wikipedia.org/wiki/File_descriptor) line per line each time the function is called.
+C function that reads from a [filedescriptor](https://en.wikipedia.org/wiki/File_descriptor) line per line, each time the function is called.
 
 ## Prototype
 
-```c_cpp
+```cpp
 char *get_next_line(int const fd);
 ```
 
@@ -20,7 +20,7 @@ char *get_next_line(int const fd);
 
  - You can edit this macro to optimized the number of calls to `read(2)`.
 
-```c_cpp
+```cpp
 #  define READ_SIZE (32)
 ```
 
@@ -30,7 +30,7 @@ char *get_next_line(int const fd);
 
 Include `get_next_line()`'s header file inside your C source file:
 
-```c_cpp
+```cpp
 #include "get_next_line.h"
 ```
 
@@ -45,7 +45,7 @@ Include `get_next_line()`'s header file inside your C source file:
 
 Here is an example that reads and prints all the lines from [stdin](https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)):
 
-```c_cpp
+```cpp
 char *line;
 while ((line = get_next_line(0)) != NULL)
       printf("Next line -> %s", line);
