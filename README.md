@@ -51,6 +51,3 @@ while ((line = get_next_line(0)) != NULL)
       printf("Next line -> %s", line);
 ```
 
-## Author
-
-* **Ronan Boiteau** ([GitHub](https://github.com/ronanboiteau) / [LinkedIn](https://www.linkedin.com/in/ronanboiteau/))
